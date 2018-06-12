@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Karteek</title>
+
+</head>
+<body>
+<h1>Karteek</h1>
+<h2>1001553522</h2>
+<img src = "https://kartiksstorage.blob.core.windows.net/assignment1final/Rick_Sanchez.png" height="200" width="200">
+<h2>Select the CSV file and upload it into the database using the submit button</h2>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="data_file" />
+    <input type="submit" />
+</form>
+
+<h2>To See all Eartquakes, press the submit button</h2>
+<form action="/Search1" method="post" enctype="multipart/form-data">
+        <input type="submit" name="Search1"/>
+</form>
+
+<h2>To See Count of all Earthquakes above Magnitude 5, press the button</h2>
+<form action="/Search2" method="post" enctype="multipart/form-data">
+        <input type="submit" name="Search2"/>
+</form>
+
+<h2>Second Query, Where we search for Earthquakes between the following Parameters</h2>
+
+<form action="/magrange" method="post" enctype="multipart/form-data">
+     <label>Enter Magnitude for EQ1:</label>
+    <input type="text" name="mag1" />
+    <label>Enter Magnitude for EQ2:</label>
+    <input type="text" name="mag2" /><br>
+    <label>Enter Date1:</label>
+    <input type="text" name="date1" placeholder="YYYY-MM-DD"/>
+    <label>Enter Date2:</label>
+    <input type="text" name="date2" placeholder="YYYY-MM-DD"/>
+    <input type="submit" />
+</form>
+
+<h2>Third Query, Where we search for Earthquakes based upon Distance and Location</h2>
+
+<form action="/magplace" method="post" enctype="multipart/form-data">
+     <label>Enter Distance:</label>
+    <input type="text" name="distance" />
+    <label>Enter Place:</label>
+    <input type="text" name="place" />
+    <input type="submit" />
+</form>
+
+<h2>Quiz Query for finding out the range of Gap</h2>
+<form action="/rangeofgap" method="post" enctype="multipart/form-data">
+     <label>Enter Gap1:</label>
+    <input type="text" name="gap1" />
+    <label>Enter Gap2:</label>
+    <input type="text" name="gap2" />
+    <input type="submit" />
+</form>
+
+<h2>Query Result: {{msg}}</h2>
+
+
+<h2>Count: {{result2}}</h2>
+<h2>Total number of earthquakes above magnitude 5 are: {{count}}</h2>
+
+
+<table>
+	<tr>
+		<th>Time</th>
+		<th>Latitude</th>
+		<th>Longitude</th>
+		<th>Depth</th>
+		<th>Mag</th>
+		<th>mag Type</th>
+        <th>NST</th>
+        <th>Gap</th>
+        <th>Dmin</th>
+        <th>RMS</th>
+        <th>ID</th>
+        <th>Place</th>
+        <th>Dept Error</th>
+        <th>Mag Err</th>
+        <th>Mang NST</th>
+        <th>Location Source</th>
+	</tr>
+	{% for row in result %}
+	<tr>
+		<td>{{row[0]}}</td>
+		<td>{{row[1]}}</td>
+		<td>{{row[2]}}</td>
+		<td>{{row[3]}}</td>
+		<td>{{row[4]}}</td>
+		<td>{{row[5]}}</td>
+        <td>{{row[6]}}</td>
+        <td>{{row[7]}}</td>
+        <td>{{row[8]}}</td>
+        <td>{{row[9]}}</td>
+        <td>{{row[10]}}</td>
+        <td>{{row[11]}}</td>
+        <td>{{row[12]}}</td>
+        <td>{{row[13]}}</td>
+        <td>{{row[14]}}</td>
+        <td>{{row[15]}}</td>
+        <td>{{row[16]}}</td>
+    </tr>
+	{% endfor %}
+</table>
+
+
+</body>
+</html>
